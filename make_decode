@@ -1,0 +1,1 @@
+g++ -ggdb  decode.cpp `pkg-config --cflags opencv` -o decode `pkg-config --libs opencv`
