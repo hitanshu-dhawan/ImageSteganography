@@ -36,9 +36,17 @@ int main(int argc, char** argv) {
 
 	// Stores original image
 	Mat image = imread(argv[1]);
+	if(image.empty()) {
+		cout << "Image Error\n";
+		exit(-1);
+	}
 
 	// Open file for text information
 	ifstream file(argv[2]);
+	if(!file.is_open()) {
+		cout << "File Error\n";
+		exit(-1);
+	}
 
 	char ch;
 	file.get(ch);

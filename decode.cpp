@@ -33,7 +33,10 @@ int main(int argc, char** argv) {
 
 	// Stores original image
 	Mat image = imread(argv[1]);
-
+	if(image.empty()) {
+		cout << "Image Error\n";
+		exit(-1);
+	}
 
 	char ch=0;
 	int bit_count = 0;
