@@ -19,13 +19,14 @@ bool isBitSet(char ch, int pos) {
 }
 
 int main(int argc, char** argv) {
-	
+
 	/*
 	./encode image.jpg textfile.txt output_image.jpg
 	argv[0] = ./encode
 	argv[1] = output_image.jpg
 	*/
 
+	// Checks if proper number of arguments are passed
 	if(argc != 2) {
 		cout << "Arguments Error" << "\n";
 		return -1;
@@ -38,21 +39,36 @@ int main(int argc, char** argv) {
 		exit(-1);
 	}
 
+	// char to work on
 	char ch=0;
+	// contains information about which bit of char to work on
 	int bit_count = 0;
 
+	/*
+	To extract the message from the image, we will iterate through the pixels and extract the LSB of
+	the pixel values (RGB) and this way we can get our message.
+	*/
 	for(int row=0; row < image.rows; row++) {
 		for(int col=0; col < image.cols; col++) {
 			for(int color=0; color < 3; color++) {
 
-				if(isBitSet(image.at<Vec3b>(row,col)[color],0))
+				// stores the pixel details
+				Vec3b pixel = image.at<Vec3b>(Point(row,col));
+
+				// manipulate char bits according to the LSB of pixel values
+				if(isBitSet(pixel.val[color],0))
 					ch |= 1;
 
+				// increment bit_count to work on next bit
 				bit_count++;
 
+				// bit_count is 8, that means we got our char from the encoded image
 				if(bit_count == 8) {
+
+					// NULL char is encountered
 					if(ch == '\0')
 						goto OUT;
+
 					bit_count = 0;
 					cout << ch;
 					ch = 0;
@@ -65,7 +81,7 @@ int main(int argc, char** argv) {
 		}
 	}
 	OUT:;
-	
+
 
     return 0;
 }
