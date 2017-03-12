@@ -36,3 +36,6 @@ Refer <a href="https://github.com/jayrambhia/Install-OpenCV">this</a> repository
   $ ./decode Images/output_image.png
   ```
   The hidden message will be displayed on your console.
+
+### See in Action
+<a href="https://youtu.be/pLOUYwLjG5E">YouTube Video</a>
