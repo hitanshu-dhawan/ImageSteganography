@@ -21,15 +21,15 @@ bool isBitSet(char ch, int pos) {
 int main(int argc, char** argv) {
 
 	/*
-	./encode image.jpg textfile.txt output_image.jpg
+	./encode image.png textfile.txt output_image.png
 	argv[0] = ./encode
-	argv[1] = output_image.jpg
+	argv[1] = output_image.png
 	*/
 
 	// Checks if proper number of arguments are passed
 	if(argc != 2) {
 		cout << "Arguments Error" << "\n";
-		return -1;
+		exit(-1);
 	}
 
 	// Stores original image
