@@ -21,8 +21,8 @@ bool isBitSet(char ch, int pos) {
 int main(int argc, char** argv) {
 
 	/*
-	./encode image.png textfile.txt output_image.png
-	argv[0] = ./encode
+	./decode output_image.png
+	argv[0] = ./decode
 	argv[1] = output_image.png
 	*/
 
