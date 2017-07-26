@@ -38,4 +38,4 @@ Refer <a href="https://github.com/jayrambhia/Install-OpenCV">this</a> repository
   The hidden message will be displayed on your console.
 
 ### See in Action
-<a href="https://youtu.be/pLOUYwLjG5E">YouTube Video</a>
+<a href="https://youtu.be/pLOUYwLjG5E"><img src="https://github.com/hitanshu-dhawan/ImageSteganography/blob/master/youtube_icon.png" alt="YouTube Video"  width="80px" /></a>
