@@ -1,7 +1,7 @@
 #include <iostream>
-
+#include <opencv2/opencv.hpp>
 //#include <cv.h>
-#include <highgui.h>
+//#include <highgui.h>
 //#include <opencv2/imgproc/imgproc.hpp>
 
 using namespace std;
@@ -43,13 +43,15 @@ int main(int argc, char** argv) {
 	char ch=0;
 	// contains information about which bit of char to work on
 	int bit_count = 0;
-
+	bool decoded = false;
 	/*
 	To extract the message from the image, we will iterate through the pixels and extract the LSB of
 	the pixel values (RGB) and this way we can get our message.
 	*/
 	for(int row=0; row < image.rows; row++) {
+		if (decoded) {break;}
 		for(int col=0; col < image.cols; col++) {
+			if (decoded) {break;}
 			for(int color=0; color < 3; color++) {
 
 				// stores the pixel details
@@ -66,9 +68,10 @@ int main(int argc, char** argv) {
 				if(bit_count == 8) {
 
 					// NULL char is encountered
-					if(ch == '\0')
-						goto OUT;
-
+					if(ch == '\0'){
+					    decoded = true;
+                    			    break;
+					}
 					bit_count = 0;
 					cout << ch;
 					ch = 0;
@@ -80,7 +83,6 @@ int main(int argc, char** argv) {
 			}
 		}
 	}
-	OUT:;
 
 
     return 0;

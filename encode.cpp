@@ -1,9 +1,8 @@
 #include <iostream>
 #include <fstream>
-
+#include <opencv2/opencv.hpp>
 //#include <cv.h>
-#include <highgui.h>
-//#include <opencv2/imgproc/imgproc.hpp>
+//#include <highgui.h>
 
 using namespace std;
 using namespace cv;
@@ -68,7 +67,9 @@ int main(int argc, char** argv) {
 	*/
 
 	for(int row=0; row < image.rows; row++) {
+		if (encoded) {break;}
 		for(int col=0; col < image.cols; col++) {
+			if (encoded) {break;}
 			for(int color=0; color < 3; color++) {
 
 				// stores the pixel details
@@ -90,7 +91,7 @@ int main(int argc, char** argv) {
 				// if last_null_char is true and bit_count is 8, then our message is successfully encode.
 				if(last_null_char && bit_count == 8) {
 					encoded  = true;
-					goto OUT;
+					break;
 				}
 
 				// if bit_count is 8 we pick the next char from the file and work on it
@@ -108,7 +109,6 @@ int main(int argc, char** argv) {
 			}
 		}
 	}
-	OUT:;
 
 	// whole message was not encoded
 	if(!encoded) {
